@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Painting Game</title>
+<style>
+
+body{
+background-color: yellow;
+}
+
+h1{
+font-size: 20px;
+font-family: fantasy;
+}
+
+#window{
+width: 1100px;
+height: 500px;
+background-color: rgb(204, 255, 204);
+border-style: groove;
+border-width: 15px;
+border-color: green;
+}
+
+.dot-blue{
+background: blue;
+width: 7px;
+height: 7px;
+position: absolute;
+border-radius: 3px;
+}
+
+.dot-black{
+background: black;
+width: 7px;
+height: 7px;
+position: absolute;
+border-radius: 3px;
+}
+
+.dot-red{
+background: red;
+width: 7px;
+height: 7px;
+position: absolute;
+border-radius: 3px;
+}
+
+.dot-green{
+background: green;
+width: 7px;
+height: 7px;
+position: absolute;
+border-radius: 3px;
+}
+
+.dot-yellow{
+background: yellow;
+width: 7px;
+height: 7px;
+position: absolute;
+border-radius: 3px;
+}
+
+</style>
+</head>
+<body>
+<h1>This is my attempt at a painting game using html,
+ css, and js</h1>
+<div id="window">
+
+
+</div>
+<button id="blue" type="button">blue</button>
+<button id="red" type="button">red</button>
+<button id="black" type="button">black</button>
+<button id="green" type="button">green</button>
+<button id="yellow" type="button">yellow</button><br>
+<script>
+
+var color = "dot-black";
+var mouseDown = 0;
+
+var bluebutton = document.getElementById("blue");
+var bluepress = function(){
+color = "dot-blue";
+mouseDown++;
+};
+bluebutton.addEventListener("click", bluepress);
+
+var redbutton = document.getElementById("red");
+var redpress = function(){
+color = "dot-red";
+mouseDown++;
+};
+redbutton.addEventListener("click", redpress);
+
+var blackbutton = document.getElementById("black");
+var blackpress = function(){
+color = "dot-black";
+mouseDown++;
+};
+blackbutton.addEventListener("click", blackpress);
+
+var greenbutton = document.getElementById("green");
+var greenpress = function(){
+color = "dot-green";
+mouseDown++;
+};
+greenbutton.addEventListener("click", greenpress);
+
+var yellowbutton = document.getElementById("yellow");
+var yellowpress = function(){
+color = "dot-yellow";
+mouseDown++;
+};
+yellowbutton.addEventListener("click", yellowpress);
+
+
+document.body.onmousedown = function() { 
+  mouseDown++;
+};
+
+var canvas = document.getElementById("window");
+
+var mouseMove = function(e){
+if(mouseDown % 2 === 1){
+var dot = document.createElement("div");
+dot.className = color;
+document.body.appendChild(dot);
+dot.style.top = e.clientY + "px";
+dot.style.left = e.clientX + "px";
+}
+};
+
+canvas.addEventListener("mousemove", mouseMove);
+
+</script>
+</body>
+</html>
